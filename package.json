@@ -1,0 +1,62 @@
+{
+  "name": "json-to-ts-interface",
+  "publisher": "refraincc",
+  "displayName": "一款智能将JSON对象转换为TypeScript接口的VSCode插件，支持嵌套对象处理和智能命名规范。",
+  "description": "",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "icon": "images/icon.png",
+  "keywords": ["typescript", "json", "interface", "converter"],
+  "contributes": {
+    "commands": [
+      {
+        "command": "jsonToTs.convert",
+        "title": "JSON替换Interface"
+      },
+      {
+        "command": "jsonToTs.newFile",
+        "title": "JSON创建新Interface"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "jsonToTs.convert",
+          "when": "editorHasSelection",
+          "group": "navigation@2"
+        },
+        {
+          "command": "jsonToTs.newFile",
+          "when": "editorHasSelection",
+          "group": "navigation@2"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.28.0",
+    "@typescript-eslint/parser": "^8.28.0",
+    "eslint": "^9.23.0",
+    "typescript": "^5.8.2",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
